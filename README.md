@@ -25,14 +25,17 @@ This project demonstrates how to blink an LED using an AVR microcontroller, emul
    cd LED_Blink_AVR
    
 2. **Compile the Source Code**
+   ```bash
 mkdir -p build
 avr-gcc -mmcu=atmega328p -DF_CPU=16000000UL -Os -o build/main.elf src/main.c
 avr-objcopy -O ihex build/main.elf build/main.hex
 
 3.**Run the Emulation**
+```bash
 qemu-system-avr -M arduino-uno -bios build/main.hex -serial stdio
 
 or, for non-graphical output:
 
+```bash
 qemu-system-avr -M arduino-uno -kernel build/main.elf -serial stdio -nographic
 
